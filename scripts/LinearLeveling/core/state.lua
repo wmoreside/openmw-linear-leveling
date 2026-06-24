@@ -1,5 +1,6 @@
 local M = {
     attributesBeforeLevelUp = nil,
+    isChargenComplete = false,
     skillIncreasesForAttribute = {
         strength = 0,
         intelligence = 0,
@@ -10,6 +11,7 @@ local M = {
         personality = 0,
         luck = 0,
     },
+    startingHealth = nil,
 }
 
 M.load = function(data)
@@ -22,7 +24,9 @@ end
 
 M.save = function()
     return {
+        isChargenComplete = M.isChargenComplete,
         skillIncreasesForAttribute = M.skillIncreasesForAttribute,
+        startingHealth = M.startingHealth,
     }
 end
 
