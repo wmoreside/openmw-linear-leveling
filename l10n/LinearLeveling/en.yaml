@@ -1,0 +1,14 @@
+page_name: "Linear Leveling"
+page_description: "Configure how skill increases translate into attribute multipliers when leveling up."
+
+multiplier_group_name: "Skill Increases Per Multiplier"
+multiplier_group_description: "The number of skill increases required to improve an attribute multiplier."
+
+skillIncreasesPerMultiplier_name: "Number of Skill Increases"
+
+skill_values_group_name: "Skill Increase Values"
+skill_values_group_description: "The amount a skill increase adds to attribute multiplier progression."
+
+majorSkillValue_name: "Major Skill Value"
+minorSkillValue_name: "Minor Skill Value"
+miscSkillValue_name: "Misc Skill Value"

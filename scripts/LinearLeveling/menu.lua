@@ -1,0 +1,73 @@
+local I = require("openmw.interfaces")
+
+
+I.Settings.registerPage {
+    key = "LinearLeveling",
+    l10n = "LinearLeveling",
+    name = "page_name",
+    description = "page_description",
+}
+
+I.Settings.registerGroup {
+    key = "SettingsPlayerLinearLevelingMultiplier",
+    page = "LinearLeveling",
+    l10n = "LinearLeveling",
+    name = "multiplier_group_name",
+    description = "multiplier_group_description",
+    permanentStorage = true,
+    order = 0,
+    settings = {
+        {
+            key = "skillIncreasesPerMultiplier",
+            renderer = "number",
+            name = "skillIncreasesPerMultiplier_name",
+            default = 2.5,
+            argument = {
+                integer = false,
+                min = 0.1,
+            },
+        },
+    },
+}
+
+I.Settings.registerGroup {
+    key = "SettingsPlayerLinearLevelingSkillValues",
+    page = "LinearLeveling",
+    l10n = "LinearLeveling",
+    name = "skill_values_group_name",
+    description = "skill_values_group_description",
+    permanentStorage = true,
+    order = 1,
+    settings = {
+        {
+            key = "majorSkillValue",
+            renderer = "number",
+            name = "majorSkillValue_name",
+            default = 1,
+            argument = {
+                integer = false,
+                min = 0,
+            },
+        },
+        {
+            key = "minorSkillValue",
+            renderer = "number",
+            name = "minorSkillValue_name",
+            default = 1,
+            argument = {
+                integer = false,
+                min = 0,
+            },
+        },
+        {
+            key = "miscSkillValue",
+            renderer = "number",
+            name = "miscSkillValue_name",
+            default = 1,
+            argument = {
+                integer = false,
+                min = 0,
+            },
+        },
+    },
+}

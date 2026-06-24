@@ -1,13 +1,9 @@
 local core = require("openmw.core")
 local omwself = require("openmw.self")
 local types = require("openmw.types")
+local settings = require("scripts.LinearLeveling.core.settings")
 local state = require("scripts.LinearLeveling.core.state")
 
-
-local SKILL_INCREASES_PER_MULTIPLIER = 2.5
-local MAJOR_SKILL_INCREASE_VALUE = 1
-local MINOR_SKILL_INCREASE_VALUE = 1
-local MISC_SKILL_INCREASE_VALUE = 0
 
 local M = {}
 
@@ -46,9 +42,9 @@ end
 
 local function getSkillIncreaseValue(skillId)
     local skills = getClassSkills()
-    if skills.major[skillId] then return MAJOR_SKILL_INCREASE_VALUE end
-    if skills.minor[skillId] then return MINOR_SKILL_INCREASE_VALUE end
-    return MISC_SKILL_INCREASE_VALUE
+    if skills.major[skillId] then return settings.getMajorSkillValue() end
+    if skills.minor[skillId] then return settings.getMinorSkillValue() end
+    return settings.getMiscSkillValue()
 end
 
 local function getVanillaSkillIncreasesRequiredForMultiplier(multiplier)
@@ -62,7 +58,7 @@ end
 local function removeSkillIncreasesForIncreasedAttribute(attributeId, attributeIncrease)
     if attributeIncrease < 1 then return end
 
-    local decreaseValue = SKILL_INCREASES_PER_MULTIPLIER * (attributeIncrease - 1)
+    local decreaseValue = settings.getSkillIncreasesPerMultiplier() * (attributeIncrease - 1)
     state.skillIncreasesForAttribute[attributeId] =
         state.skillIncreasesForAttribute[attributeId] - decreaseValue
 end
@@ -75,7 +71,8 @@ end
 
 M.getMultiplier = function(attributeId)
     local skillIncreases = state.skillIncreasesForAttribute[attributeId]
-    local multiplier = math.floor(1 + skillIncreases / SKILL_INCREASES_PER_MULTIPLIER)
+    local skillIncreasesPerMultiplier = settings.getSkillIncreasesPerMultiplier()
+    local multiplier = math.floor(1 + skillIncreases / skillIncreasesPerMultiplier)
     return math.min(multiplier, 5)
 end
 
