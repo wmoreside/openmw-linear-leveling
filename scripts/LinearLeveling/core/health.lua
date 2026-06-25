@@ -31,8 +31,8 @@ M.updateHealthAfterLevelUp = function()
     local currentHealth = types.Actor.stats.dynamic.health(omwself)
     local currentDamage = (currentHealth.base + currentHealth.modifier) - currentHealth.current
 
-    local endurancePart = (level - 1) * 0.05 * endurance
-    local skillsPart = (level - 1) * 0.5 * classSkills.getHealthAffectingSkillsCount()
+    local endurancePart = (level - 1) * 0.06 * endurance
+    local skillsPart = (level - 1) * 0.4 * classSkills.getHealthAffectingSkillsCount()
     local newBaseHealth = state.startingHealth + endurancePart + skillsPart
     local newCurrentHealth = math.max(1, (newBaseHealth + currentHealth.modifier) - currentDamage)
 
