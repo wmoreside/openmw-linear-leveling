@@ -1,31 +1,12 @@
 local core = require("openmw.core")
 local omwself = require("openmw.self")
 local types = require("openmw.types")
+local classSkills = require("scripts.LinearLeveling.core.classSkills")
 local settings = require("scripts.LinearLeveling.core.settings")
 local state = require("scripts.LinearLeveling.core.state")
 
 
 local M = {}
-
-local classSkillsCache = nil
-local function getClassSkills()
-    if classSkillsCache ~= nil then return classSkillsCache end
-
-    local player = types.NPC.record(omwself)
-    local class = types.NPC.classes.record(player.class)
-    local skills = { major = {}, minor = {} }
-
-    for _, skillId in ipairs(class.majorSkills) do
-        skills.major[skillId] = true
-    end
-
-    for _, skillId in ipairs(class.minorSkills) do
-        skills.minor[skillId] = true
-    end
-
-    classSkillsCache = skills
-    return classSkillsCache
-end
 
 local function getAttributes()
     return {
@@ -41,7 +22,7 @@ local function getAttributes()
 end
 
 local function getSkillIncreaseValue(skillId)
-    local skills = getClassSkills()
+    local skills = classSkills.get()
     if skills.major[skillId] then return settings.getMajorSkillValue() end
     if skills.minor[skillId] then return settings.getMinorSkillValue() end
     return settings.getMiscSkillValue()

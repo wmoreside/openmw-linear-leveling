@@ -1,47 +1,12 @@
 local async = require("openmw.async")
 local omwself = require("openmw.self")
 local types = require("openmw.types")
-local state = require("scripts.LinearLeveling.core.state")
+local classSkills = require("scripts.LinearLeveling.core.classSkills")
 local settings = require("scripts.LinearLeveling.core.settings")
+local state = require("scripts.LinearLeveling.core.state")
 
 
 local M = {}
-
-local healthAffectingSkills = {
-    heavyarmor = true,
-    mediumarmor = true,
-    lightarmor = true,
-    unarmored = true,
-    block = true,
-    axe = true,
-    bluntweapon = true,
-    handtohand = true,
-    longblade = true,
-    marksman = true,
-    shortblade = true,
-    spear = true,
-    acrobatics = true,
-    athletics = true,
-}
-
-local function getHealthAffectingSkillsCount()
-    local player = types.NPC.record(omwself)
-    local class = types.NPC.classes.record(player.class)
-    local count = 0
-
-    local function tally(skillList)
-        for _, skillId in ipairs(skillList) do
-            if healthAffectingSkills[skillId] then
-                count = count + 1
-            end
-        end
-    end
-
-    tally(class.majorSkills)
-    tally(class.minorSkills)
-
-    return count
-end
 
 M.saveStartingHealth = function()
     if not state.isChargenComplete then
@@ -67,7 +32,7 @@ M.updateHealthAfterLevelUp = function()
     local currentDamage = (currentHealth.base + currentHealth.modifier) - currentHealth.current
 
     local endurancePart = (level - 1) * 0.05 * endurance
-    local skillsPart = (level - 1) * 0.5 * getHealthAffectingSkillsCount()
+    local skillsPart = (level - 1) * 0.5 * classSkills.getHealthAffectingSkillsCount()
     local newBaseHealth = state.startingHealth + endurancePart + skillsPart
     local newCurrentHealth = math.max(1, (newBaseHealth + currentHealth.modifier) - currentDamage)
 
