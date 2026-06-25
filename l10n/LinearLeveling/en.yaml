@@ -16,10 +16,9 @@ miscSkillValue_name: "Misc Skill Value"
 alt_health_group_name: "Alternative Health Calculation"
 alt_health_group_description: "Recalculate health on level up based on current endurance and class skills."
 
-enableAltHealth_name: "Enable"
+enableAltHealth_name: "Enabled"
 
-debug_group_name: "Debug Settings"
-debug_group_description: "Options for debugging and development."
+tooltips_group_name: "Tooltips"
+tooltips_group_description: "Show skill increases in the level tooltip. Requires Stats Window Extender."
 
-enableTooltips_name: "Enable Tooltips"
-enableTooltips_description: "Show skill increases in the level tooltip. Requires Stats Window Extender."
+enableTooltips_name: "Enabled"

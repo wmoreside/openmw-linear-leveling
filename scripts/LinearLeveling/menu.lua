@@ -91,11 +91,11 @@ I.Settings.registerGroup {
 }
 
 I.Settings.registerGroup {
-    key = "SettingsPlayerLinearLevelingDebug",
+    key = "SettingsPlayerLinearLevelingTooltips",
     page = "LinearLeveling",
     l10n = "LinearLeveling",
-    name = "debug_group_name",
-    description = "debug_group_description",
+    name = "tooltips_group_name",
+    description = "tooltips_group_description",
     permanentStorage = true,
     order = 3,
     settings = {
@@ -103,7 +103,6 @@ I.Settings.registerGroup {
             key = "enableTooltips",
             renderer = "checkbox",
             name = "enableTooltips_name",
-            description = "enableTooltips_description",
             default = true,
         },
     },

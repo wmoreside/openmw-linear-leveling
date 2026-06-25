@@ -6,7 +6,7 @@ local M = {}
 local multiplierSettings = storage.playerSection("SettingsPlayerLinearLevelingMultiplier")
 local skillValueSettings = storage.playerSection("SettingsPlayerLinearLevelingSkillValues")
 local altHealthSettings = storage.playerSection("SettingsPlayerLinearLevelingAltHealth")
-local debugSettings = storage.playerSection("SettingsPlayerLinearLevelingDebug")
+local tooltipsSettings = storage.playerSection("SettingsPlayerLinearLevelingTooltips")
 
 M.getSkillIncreasesPerMultiplier = function()
     return multiplierSettings:get("skillIncreasesPerMultiplier")
@@ -29,7 +29,7 @@ M.getAltHealthEnabled = function()
 end
 
 M.getTooltipsEnabled = function()
-    return debugSettings:get("enableTooltips")
+    return tooltipsSettings:get("enableTooltips")
 end
 
 return M
