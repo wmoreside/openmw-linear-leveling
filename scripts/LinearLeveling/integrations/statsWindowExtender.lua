@@ -14,14 +14,14 @@ local function levelTooltip()
     local mults = {}
 
     for attribute, skillIncreases in pairs(state.skillIncreasesForAttribute) do
-        if skillIncreases > 0 then
-            local multiplier = multipliers.getMultiplier(attribute)
-            local tooltipsEnabled = settings.getTooltipsEnabled()
-            if tooltipsEnabled then
-                mults[attribute] = multiplier .. " #dfc99f(" .. skillIncreases .. ")"
-            elseif not tooltipsEnabled and multiplier > 1 then
-                mults[attribute] = multiplier
-            end
+        if skillIncreases < 1 then return end
+
+        local multiplier = multipliers.getMultiplier(attribute)
+        local tooltipsEnabled = settings.getTooltipsEnabled()
+        if tooltipsEnabled then
+            mults[attribute] = multiplier .. " #dfc99f(" .. skillIncreases .. ")"
+        elseif not tooltipsEnabled and multiplier > 1 then
+            mults[attribute] = multiplier
         end
     end
 
