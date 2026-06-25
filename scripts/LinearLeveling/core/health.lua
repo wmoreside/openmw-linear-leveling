@@ -2,6 +2,7 @@ local async = require("openmw.async")
 local omwself = require("openmw.self")
 local types = require("openmw.types")
 local state = require("scripts.LinearLeveling.core.state")
+local settings = require("scripts.LinearLeveling.core.settings")
 
 
 local M = {}
@@ -57,6 +58,7 @@ end
 
 M.updateHealthAfterLevelUp = function()
     if state.startingHealth == nil then return end
+    if not settings.getAltHealthEnabled() then return end
 
     local level = types.Actor.stats.level(omwself).current
     local endurance = types.Actor.stats.attributes.endurance(omwself).base

@@ -73,13 +73,31 @@ I.Settings.registerGroup {
 }
 
 I.Settings.registerGroup {
+    key = "SettingsPlayerLinearLevelingAltHealth",
+    page = "LinearLeveling",
+    l10n = "LinearLeveling",
+    name = "alt_health_group_name",
+    description = "alt_health_group_description",
+    permanentStorage = true,
+    order = 2,
+    settings = {
+        {
+            key = "enableAltHealth",
+            renderer = "checkbox",
+            name = "enableAltHealth_name",
+            default = false,
+        },
+    },
+}
+
+I.Settings.registerGroup {
     key = "SettingsPlayerLinearLevelingDebug",
     page = "LinearLeveling",
     l10n = "LinearLeveling",
     name = "debug_group_name",
     description = "debug_group_description",
     permanentStorage = true,
-    order = 2,
+    order = 3,
     settings = {
         {
             key = "enableTooltips",
