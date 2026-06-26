@@ -9,27 +9,27 @@ local altHealthSettings = storage.playerSection("SettingsPlayerLinearLevelingAlt
 local tooltipsSettings = storage.playerSection("SettingsPlayerLinearLevelingTooltips")
 
 M.getSkillIncreasesPerMultiplier = function()
-    return multiplierSettings:get("skillIncreasesPerMultiplier")
+    return multiplierSettings:get("skillIncreasesPerMultiplier") or 2.5
 end
 
 M.getMajorSkillValue = function()
-    return skillValueSettings:get("majorSkillValue")
+    return skillValueSettings:get("majorSkillValue") or 1
 end
 
 M.getMinorSkillValue = function()
-    return skillValueSettings:get("minorSkillValue")
+    return skillValueSettings:get("minorSkillValue") or 1
 end
 
 M.getMiscSkillValue = function()
-    return skillValueSettings:get("miscSkillValue")
+    return skillValueSettings:get("miscSkillValue") or 1
 end
 
 M.getAltHealthEnabled = function()
-    return altHealthSettings:get("enableAltHealth")
+    return altHealthSettings:get("enableAltHealth") or false
 end
 
 M.getTooltipsEnabled = function()
-    return tooltipsSettings:get("enableTooltips")
+    return tooltipsSettings:get("enableTooltips") or true
 end
 
 return M
