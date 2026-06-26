@@ -1,7 +1,7 @@
 local I = require("openmw.interfaces")
 local core = require("openmw.core")
 local omwself = require("openmw.self")
-local multipliers = require("scripts.LinearLeveling.core.multipliers")
+local multiplierManager = require("scripts.LinearLeveling.core.multiplierManager")
 local settings = require("scripts.LinearLeveling.core.settings")
 local state = require("scripts.LinearLeveling.core.state")
 
@@ -15,7 +15,7 @@ local function levelTooltip()
 
     for attribute, skillIncreases in pairs(state.skillIncreasesForAttribute) do
         if skillIncreases > 0 then
-            local multiplier = multipliers.getMultiplier(attribute)
+            local multiplier = multiplierManager.getMultiplier(attribute)
             local tooltipsEnabled = settings.getTooltipsEnabled()
             if tooltipsEnabled then
                 mults[attribute] = multiplier .. " #dfc99f(" .. skillIncreases .. ")"

@@ -1,11 +1,11 @@
 local I = require("openmw.interfaces")
-local health = require("scripts.LinearLeveling.core.health")
-local multipliers = require("scripts.LinearLeveling.core.multipliers")
+local healthManager = require("scripts.LinearLeveling.core.healthManager")
+local multiplierManager = require("scripts.LinearLeveling.core.multiplierManager")
 local state = require("scripts.LinearLeveling.core.state")
 local statsWindowExtender = require("scripts.LinearLeveling.integrations.statsWindowExtender")
 
 
-I.SkillProgression.addSkillLevelUpHandler(multipliers.updateMultiplierAfterSkillIncrease)
+I.SkillProgression.addSkillLevelUpHandler(multiplierManager.updateMultiplierAfterSkillIncrease)
 
 statsWindowExtender.enable()
 
@@ -17,12 +17,12 @@ return {
     eventHandlers = {
         UiModeChanged = function(data)
             if data.oldMode == "ChargenClassReview" then
-                health.saveStartingHealth()
+                healthManager.saveStartingHealth()
             elseif data.newMode == "LevelUp" then
-                multipliers.saveAttributesBeforeLevelUp()
+                multiplierManager.saveAttributesBeforeLevelUp()
             elseif data.oldMode == "LevelUp" then
-                health.updateHealthAfterLevelUp()
-                multipliers.updateMultipliersAfterLevelUp()
+                healthManager.updateHealthAfterLevelUp()
+                multiplierManager.updateMultipliersAfterLevelUp()
             end
         end
     },
