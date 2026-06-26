@@ -62,7 +62,7 @@ M.saveAttributesBeforeLevelUp = function()
 end
 
 M.updateMultiplierAfterSkillIncrease = function(skillId, _, options)
-    if options.skillIncreaseValue < 0 then return end
+    if options.skillIncreaseValue <= 0 then return end
 
     local attributeId = core.stats.Skill.record(skillId).attribute
     state.skillIncreasesForAttribute[attributeId] =
