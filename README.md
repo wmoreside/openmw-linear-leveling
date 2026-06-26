@@ -17,7 +17,7 @@ The number of skill increases required per multiplier and the contribution of ma
 
 ### Alternative Health Calculation
 
-This mod also features an (entirely optional) alternative health calculation, based on your current endurance and class skills. The skills that contribute to health gains are all weapon skills, armor skills, athletics and acrobatics. The exact formula is:
+This mod also features an (entirely optional) alternative health calculation, based on your current endurance and class skills. The skills that contribute to health gains are all weapon skills, armor skills (including block), athletics and acrobatics. The exact formula is:
 
     Starting Health + (Level - 1) * 0.06 * Endurance + (Level - 1) * 0.40 * # Health Affecting Skills
 

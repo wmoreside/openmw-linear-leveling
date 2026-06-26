@@ -11,22 +11,22 @@ local M = {}
 local function levelTooltip()
     local level = omwself.type.stats.level(omwself)
     local levelUpTotal = core.getGMST("iLevelupTotal")
-    local mults = {}
+    local multipliers = {}
 
     for attribute, skillIncreases in pairs(state.skillIncreasesForAttribute) do
         if skillIncreases > 0 then
             local multiplier = multiplierManager.getMultiplier(attribute)
             local tooltipsEnabled = settings.getTooltipsEnabled()
             if tooltipsEnabled then
-                mults[attribute] = multiplier .. " #dfc99f(" .. skillIncreases .. ")"
+                multipliers[attribute] = multiplier .. " #dfc99f(" .. skillIncreases .. ")"
             elseif not tooltipsEnabled and multiplier > 1 then
-                mults[attribute] = multiplier
+                multipliers[attribute] = multiplier
             end
         end
     end
 
     local stats = I.StatsWindow.Templates.STATS
-    local progressBar = stats.levelProgressBar(level.progress, levelUpTotal, mults)
+    local progressBar = stats.levelProgressBar(level.progress, levelUpTotal, multipliers)
     return stats.tooltip(8, progressBar, "level")
 end
 

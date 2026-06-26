@@ -54,7 +54,7 @@ M.getMultiplier = function(attributeId)
     local skillIncreases = state.skillIncreasesForAttribute[attributeId]
     local skillIncreasesPerMultiplier = settings.getSkillIncreasesPerMultiplier()
     local multiplier = math.floor(1 + skillIncreases / skillIncreasesPerMultiplier)
-    return math.min(multiplier, 5)
+    return math.max(1, math.min(multiplier, 5))
 end
 
 M.saveAttributesBeforeLevelUp = function()
