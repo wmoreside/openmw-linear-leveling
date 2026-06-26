@@ -1,7 +1,7 @@
-local I = require("openmw.interfaces")
-local healthManager = require("scripts.LinearLeveling.core.healthManager")
-local multiplierManager = require("scripts.LinearLeveling.core.multiplierManager")
-local state = require("scripts.LinearLeveling.core.state")
+local I                   = require("openmw.interfaces")
+local healthManager       = require("scripts.LinearLeveling.core.healthManager")
+local multiplierManager   = require("scripts.LinearLeveling.core.multiplierManager")
+local state               = require("scripts.LinearLeveling.core.state")
 local statsWindowExtender = require("scripts.LinearLeveling.integrations.statsWindowExtender")
 
 

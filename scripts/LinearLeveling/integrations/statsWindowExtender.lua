@@ -1,9 +1,9 @@
-local I = require("openmw.interfaces")
-local core = require("openmw.core")
-local omwself = require("openmw.self")
+local I                 = require("openmw.interfaces")
+local core              = require("openmw.core")
+local omwself           = require("openmw.self")
 local multiplierManager = require("scripts.LinearLeveling.core.multiplierManager")
-local settings = require("scripts.LinearLeveling.core.settings")
-local state = require("scripts.LinearLeveling.core.state")
+local settings          = require("scripts.LinearLeveling.core.settings")
+local state             = require("scripts.LinearLeveling.core.state")
 
 
 local M = {}

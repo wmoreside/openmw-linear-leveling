@@ -1,8 +1,8 @@
-local async = require("openmw.async")
-local omwself = require("openmw.self")
-local types = require("openmw.types")
-local settings = require("scripts.LinearLeveling.core.settings")
-local state = require("scripts.LinearLeveling.core.state")
+local async       = require("openmw.async")
+local omwself     = require("openmw.self")
+local types       = require("openmw.types")
+local settings    = require("scripts.LinearLeveling.core.settings")
+local state       = require("scripts.LinearLeveling.core.state")
 local classSkills = require("scripts.LinearLeveling.core.utils.classSkills")
 
 
